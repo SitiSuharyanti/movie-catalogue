@@ -1,0 +1,32 @@
+# Nama yang akan ditampilkan dalam tab Github Action pada repository GitHub.
+name: Continuous Integration
+
+# Mendefinisikan pemicu dari proses CI
+on:
+  pull_request:
+    branches:
+      - main
+
+#  Mengelompokkan semua job yang berjalan di workflow
+jobs:
+  # Mendefinisikan job yang bernama test
+  test:
+    # Mendefinisikan vm yang digunakan untuk menjalankan konfigurasi job
+    runs-on: ubuntu-latest
+
+    # Memungkinkan menggunakan matrix strategy
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    # Mengelompokkan semua langkah yang berjalan di suatu job
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version}}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version}}
+      - name: Run Automates Test
+        run: |
+          npm install
+          npm run test
