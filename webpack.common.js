@@ -1,7 +1,7 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const DotenvWebpackPlugin = require('dotenv-webpack');
 
 module.exports = {
   entry: {
