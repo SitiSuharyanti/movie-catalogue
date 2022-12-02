@@ -40,7 +40,7 @@ module.exports = {
         },
       ],
     }),
-    new DotenvWebpackPlugin({
+    new Dotenv({
       path: path.resolve(__dirname, '.env'),
       systemvars: true,
       safe: true,
